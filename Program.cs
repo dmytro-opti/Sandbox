@@ -9,7 +9,39 @@ namespace Sandbox1
         {
             School school = new School("Athene", 1000, new List<Philosopher>());
 
-            Console.WriteLine(school.People.Count);
+            school.HirePhilosopher(new Philosopher() 
+            {
+                Subjects = new List<string>() { "Math", "Logic" },
+                Budget = 0,
+                MonthlySalary = 10,
+                Name = "Piphagor",
+                Priority = 0,
+                Id = Guid.NewGuid()
+            });
+
+            school.Subjects = new List<string>() { "Music", "Logic" };
+
+            Console.WriteLine(school.IsSchoolActive());
+
+            school.HirePhilosopher(new Philosopher()
+            {
+                Subjects = new List<string>() { "Music" },
+                Budget = 10,
+                MonthlySalary = 5,
+                Name = "Sofi",
+                Priority = 0,
+                Id = Guid.NewGuid()
+            });
+
+            Console.WriteLine(school.IsSchoolActive());
+
+            if (school.IsSchoolActive()) 
+            {
+                school.Learning();
+                school.Graduating(school.People);
+                school.PayMonthlySalary(school.Philosophers);
+            }
+
 
             school = new School("Megara", 800, new List<Philosopher>(), new List<Person>());
 

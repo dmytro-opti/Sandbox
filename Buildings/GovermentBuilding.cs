@@ -13,7 +13,7 @@ namespace Sandbox1.Buildings
 
         }
 
-        public void PayMonthlySalary(List<Person> people)
+        public void PayMonthlySalary<T>(List<T> people) where T : Person
         {
             foreach (Person person in people.OrderBy(x => x.Priority)) 
             {
