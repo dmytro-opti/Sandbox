@@ -10,16 +10,10 @@ namespace Sandbox1
         {
             //Danil:
 
-            List<string> types = new List<string> { "Fruit", "Vegetable" };
-            List<string> descriptions = new List<string> { "Sweet", "Bitter" };
-            List<double> values = new List<double> { 5.0, 10.0 };
-            List<DateTime?> shelfLives = new List<DateTime?> { DateTime.Now.AddDays(30), DateTime.Now.AddDays(60) };
-            List<double> calories = new List<double> { 150, 200 };
+           
 
-            Food food = new Food();
+            Food food = new Food("a", "b", "c", 0);
             Item item = new Item();
-
-            food.AddFood(types, descriptions, values, shelfLives, calories, item);
 
 
             School school = new School("Athene", 1000, new List<Philosopher>());
