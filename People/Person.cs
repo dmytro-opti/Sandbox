@@ -1,4 +1,6 @@
-﻿namespace Sandbox1.People
+﻿using Sandbox1.Enums;
+
+namespace Sandbox1.People
 {
     public class Person
     {
@@ -7,6 +9,8 @@
         public string Name { get; set; }
         public int MonthlySalary { get; set; }
         public int Budget { get; set; }
+        public Role Role { get; internal set; }
+
         public Person()
         {
 
