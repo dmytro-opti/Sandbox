@@ -1,22 +1,7 @@
-﻿using System;
+﻿using Sandbox1.Enums;
 
 namespace Sandbox1.People
 {
-    public enum WeaponType
-    {
-        Sword,
-        Spear,
-        Bow,
-        Axe
-    }
-
-    public enum WarriorRank
-    {
-        Trainee,
-        Mentor,
-        Legend
-    }
-
     public class Warrior : Person
     {
         public int Strength { get; set; }
