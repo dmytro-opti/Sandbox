@@ -32,15 +32,15 @@ namespace Sandbox1.Buildings
             {
                 if (warrior.Level >= 30)
                 {
-                    warrior.Rank = WarriorRank.Legend; // Перевести в легенди
+                    warrior.Rank = WarriorRank.Legend; 
                 }
                 else if (warrior.Level >= 20)
                 {
-                    warrior.Rank = WarriorRank.Mentor; // Перевести в наставники
+                    warrior.Rank = WarriorRank.Mentor; 
                 }
                 else
                 {
-                    warrior.Rank = WarriorRank.Trainee; // Перевести в новобранці
+                    warrior.Rank = WarriorRank.Trainee; 
                 }
             }
         }
