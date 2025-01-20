@@ -1,5 +1,5 @@
 ﻿using Sandbox1.Buildings;
-using Sandbox1.Items;
+using Sandbox1.FoodProducts;
 using Sandbox1.People;
 
 namespace Sandbox1
@@ -8,13 +8,8 @@ namespace Sandbox1
     {
         static void Main()
         {
-            //Danil:
 
-           
-
-            Food food = new Food("a", "b", "c", 0);
-            Item item = new Item();
-
+            //FoodAmbar.AddFood(5);
 
             School school = new School("Athene", 1000, new List<Philosopher>());
 
