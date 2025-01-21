@@ -1,4 +1,4 @@
-﻿namespace Sandbox1.FoodProducts
+﻿namespace Sandbox1.Buildings.Ambar.Items.FoodProducts
 {
     public class Meat : Food
     {
