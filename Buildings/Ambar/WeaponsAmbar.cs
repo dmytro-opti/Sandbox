@@ -2,7 +2,7 @@
 
 namespace Sandbox1.Buildings.Ambar
 {
-    public class WeaponsAmbar : Ambar
+    /*public class WeaponsAmbar : Ambar
     {
         string WeaponsAmbarLevel { get; set; }
 
@@ -85,5 +85,5 @@ namespace Sandbox1.Buildings.Ambar
                 Console.WriteLine("Max level");
             }
         }
-    }
+    }*/
 }

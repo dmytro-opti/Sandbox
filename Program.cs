@@ -13,7 +13,36 @@ namespace Sandbox1
 
             //Danil
 
-            FoodAmbar FoodAmbar = new FoodAmbar("Athene");
+            var ambar = new Ambar("Sparta, 1", AmbarType.Weapon, new List<ItemType>() 
+            {
+                ItemType.Bow, ItemType.Sword, ItemType.Spear
+            });
+
+            ambar.AddItem(ItemType.Bow, 10);
+            ambar.AddItem(ItemType.Bow, 10);
+            ambar.AddItem(ItemType.Bow, 10);
+            ambar.AddItem(ItemType.Bow, 10);
+            ambar.AddItem(ItemType.Bow, 10);
+            ambar.AddItem(ItemType.Iron, 100);
+            ambar.RemoveItem(ItemType.Bow, 49);
+            ambar.RemoveItem(ItemType.Bow, 10);
+            ambar.UpgradeLevel(AmbarLevelUpPrice.Level3);
+            ambar.UpgradeLevel(AmbarLevelUpPrice.Level2);
+            ambar.UpgradeLevel(AmbarLevelUpPrice.Level3);
+            ambar.UpgradeLevel(AmbarLevelUpPrice.Level4);
+            ambar.AddItem(ItemType.Sword, 100);
+            ambar.UpgradeLevel(AmbarLevelUpPrice.Level5);
+            ambar.UpgradeLevel(AmbarLevelUpPrice.Level5);
+
+            var ambars = new List<Ambar>();
+
+            for (int index = 0; index < 100; index++)
+            {
+                //var ambar = new Ambar($"Sparta, {index + 1}", AmbarType.Weapon);
+            }
+
+
+            /*FoodAmbar FoodAmbar = new FoodAmbar("Athene");
 
             FoodAmbar.AddFood(TypesOfFood.Bread, 5);
             FoodAmbar.AddFood(TypesOfFood.Meat, 7);
@@ -98,7 +127,7 @@ namespace Sandbox1
 
 
 
-
+*/
         }
     }
 }

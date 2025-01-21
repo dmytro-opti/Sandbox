@@ -2,7 +2,7 @@
 
 namespace Sandbox1.Buildings.Ambar
 {
-    public class ResoursesAmbar : Ambar
+    /*public class ResoursesAmbar : Ambar
     {
         string ResoursesAmbarLevel { get; set; }
 
@@ -85,5 +85,5 @@ namespace Sandbox1.Buildings.Ambar
                 Console.WriteLine("Max level");
             }
         }
-    }
+    }*/
 }

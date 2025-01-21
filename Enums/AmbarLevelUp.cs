@@ -15,7 +15,7 @@ namespace Sandbox1.Enums
         Level5 = 1000
     }
 
-    public enum AmbarLevelUpIncrease
+    public enum AmbarLevelUpCapacity
     {
         Level1 = 25,
         Level2 = 50,

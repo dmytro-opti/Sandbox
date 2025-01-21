@@ -2,7 +2,7 @@
 
 namespace Sandbox1.Buildings.Ambar
 {
-    public class FoodAmbar : Ambar
+    /*public class FoodAmbar : Ambar
     {
         string FoodAmbarLevel { get; set; }
 
@@ -85,5 +85,5 @@ namespace Sandbox1.Buildings.Ambar
                 Console.WriteLine("Max level");
             }
         }
-    }
+    }*/
 }
