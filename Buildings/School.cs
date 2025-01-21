@@ -45,6 +45,8 @@ namespace Sandbox1.Buildings
             foreach (Person person in people) 
             {
                 People.Remove(person);
+
+                //grades
             }
         }
 

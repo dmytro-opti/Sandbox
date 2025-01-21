@@ -24,6 +24,10 @@ namespace Sandbox1
             FoodAmbar.RemoveFood(TypesOfFood.Wine, 5);
             FoodAmbar.RemoveFood(TypesOfFood.Bread, 20);
 
+            FoodAmbar.UpgradeFoodAmbar();
+
+            FoodAmbar.AddFood(TypesOfFood.Wine, 100);
+
             //==================================================================================================
 
             School school = new School("Athene", 1000, new List<Philosopher>());

@@ -7,6 +7,8 @@ namespace Sandbox1.Buildings
     {
         public int LevelFoodAmbar { get; set; }
         public int MaximumFoodValue { get; set; }
+        public double Budget { get; set; }
+        string AmbarLevel { get; set; }
 
         public Dictionary<TypesOfFood, int> StoredFood { get; set; }
 
@@ -14,6 +16,8 @@ namespace Sandbox1.Buildings
         {
             LevelFoodAmbar = 1;
             MaximumFoodValue = 100;
+            Budget = 1000;
+            AmbarLevel = $"Level{LevelFoodAmbar}";
 
             StoredFood = new Dictionary<TypesOfFood, int>();
 
@@ -40,7 +44,7 @@ namespace Sandbox1.Buildings
                     StoredFood[typesOfFood] = MaximumFoodValue;
                 }
 
-               
+
 
 
             }
@@ -62,6 +66,32 @@ namespace Sandbox1.Buildings
                 }
             }
         }
-}
-}
 
+        public void UpgradeFoodAmbar()
+        {
+            if (LevelFoodAmbar < 5)
+            {
+                int price = (int)Enum.Parse(typeof(FoodAmbarLevelUpPrice), AmbarLevel);
+                int increase = (int)Enum.Parse(typeof(FoodAmbarLevelUpIncrease), AmbarLevel);
+
+                //int price = (int)(FoodAmbarLevelUpPrice)(LevelFoodAmbar);
+                //int increase = (int)(FoodAmbarLevelUpIncrease)(LevelFoodAmbar);
+
+                if (Budget >= price)
+                {
+                    Budget -= price;
+                    LevelFoodAmbar++;
+                    MaximumFoodValue += increase;
+                }
+                else
+                {
+                    Console.WriteLine("Not enough money");
+                }
+            }
+            else 
+            { 
+                Console.WriteLine("Max level"); 
+            }
+        }
+    }
+}
