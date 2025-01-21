@@ -25,6 +25,10 @@ namespace Sandbox1
             FoodAmbar.RemoveFood(TypesOfFood.Bread, 20);
 
             FoodAmbar.UpgradeFoodAmbar();
+            FoodAmbar.UpgradeFoodAmbar();
+            FoodAmbar.UpgradeFoodAmbar();
+            FoodAmbar.UpgradeFoodAmbar();
+
 
             FoodAmbar.AddFood(TypesOfFood.Wine, 100);
 
