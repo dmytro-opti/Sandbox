@@ -2,64 +2,64 @@
 
 namespace Sandbox1.Buildings
 {
-    public class FoodAmbar : Ambar
+    public class WeaponsAmbar : Ambar
     {
-        string FoodAmbarLevel { get; set; }
+        string WeaponsAmbarLevel { get; set; }
 
-        public Dictionary<TypesOfFood, int> StoredFood { get; set; }
+        public Dictionary<TypesOfWeapons, int> StoredWeapons { get; set; }
 
-        public FoodAmbar(string address) : base(address)
+        public WeaponsAmbar(string address) : base(address)
         {
-            AmbarType = "FoodAmbar";
+            AmbarType = "WeaponsAmbar";
             AmbsrsCount = 1;
 
             AmbarLevelValue = 1;
             MaximumItemsValue = 100;
             AmbarLevel = $"Level{AmbarLevelValue}";
 
-            StoredFood = new Dictionary<TypesOfFood, int>();
+            StoredWeapons = new Dictionary<TypesOfWeapons, int>();
 
-            foreach (TypesOfFood type in Enum.GetValues(typeof(TypesOfFood)))
+            foreach (TypesOfWeapons type in Enum.GetValues(typeof(TypesOfWeapons)))
             {
-                StoredFood.Add(type, 0);
+                StoredWeapons.Add(type, 0);
             }
         }
 
-        public void AddFood(TypesOfFood typesOfFood, int addValue)
+        public void AddWeapons(TypesOfWeapons typesOfWeapons, int addValue)
         {
-            if (StoredFood.ContainsKey(typesOfFood))
+            if (StoredWeapons.ContainsKey(typesOfWeapons))
             {
-                int newValue = StoredFood[typesOfFood] + addValue;
+                int newValue = StoredWeapons[typesOfWeapons] + addValue;
 
                 if (newValue <= MaximumItemsValue)
                 {
-                    StoredFood[typesOfFood] = newValue;
+                    StoredWeapons[typesOfWeapons] = newValue;
                 }
                 else
                 {
-                    StoredFood[typesOfFood] = MaximumItemsValue;
+                    StoredWeapons[typesOfWeapons] = MaximumItemsValue;
                 }
             }
         }
 
-        public void RemoveFood(TypesOfFood typesOfFood, int removeValue)
+        public void RemoveWeapons(TypesOfWeapons typesOfWeapons, int removeValue)
         {
-            if (StoredFood.ContainsKey(typesOfFood))
+            if (StoredWeapons.ContainsKey(typesOfWeapons))
             {
-                int newValue = StoredFood[typesOfFood] - removeValue;
+                int newValue = StoredWeapons[typesOfWeapons] - removeValue;
 
                 if (newValue >= 0)
                 {
-                    StoredFood[typesOfFood] = newValue;
+                    StoredWeapons[typesOfWeapons] = newValue;
                 }
                 else
                 {
-                    Console.WriteLine("Not enough food");
+                    Console.WriteLine("Not enough Weapons");
                 }
             }
         }
 
-        public void UpgradeFoodAmbar()
+        public void UpgradeWeaponsAmbar()
         {
             if (AmbarLevelValue < 5)
             {

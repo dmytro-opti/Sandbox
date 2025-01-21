@@ -12,7 +12,7 @@ namespace Sandbox1
 
             //Danil
 
-            FoodAmbar FoodAmbar = new FoodAmbar("Athene");    
+            FoodAmbar FoodAmbar = new FoodAmbar("Athene");
 
             FoodAmbar.AddFood(TypesOfFood.Bread, 5);
             FoodAmbar.AddFood(TypesOfFood.Meat, 7);
@@ -30,8 +30,31 @@ namespace Sandbox1
             FoodAmbar.UpgradeFoodAmbar();
 
 
-            FoodAmbar.AddFood(TypesOfFood.Wine, 100);
+            ResoursesAmbar ResoursesAmbar = new ResoursesAmbar("Athene");
 
+            ResoursesAmbar.AddResourses(TypesOfResourses.Wood, 5);
+            ResoursesAmbar.AddResourses(TypesOfResourses.Stone, 7);
+            ResoursesAmbar.AddResourses(TypesOfResourses.Iron, 15);
+
+            ResoursesAmbar.RemoveResourses(TypesOfResourses.Wood, 3);
+            ResoursesAmbar.RemoveResourses(TypesOfResourses.Stone, 2);
+            ResoursesAmbar.RemoveResourses(TypesOfResourses.Iron, 5);
+            ResoursesAmbar.RemoveResourses(TypesOfResourses.Wood, 20);
+
+            ResoursesAmbar.UpgradeResoursesAmbar();
+            ResoursesAmbar.UpgradeResoursesAmbar();
+            ResoursesAmbar.UpgradeResoursesAmbar();
+            ResoursesAmbar.UpgradeResoursesAmbar();
+            ResoursesAmbar.UpgradeResoursesAmbar();
+            ResoursesAmbar.UpgradeResoursesAmbar();
+
+            WeaponsAmbar WeaponsAmbar = new WeaponsAmbar("Athene");
+
+            WeaponsAmbar.AddWeapons(TypesOfWeapons.Sword, 5);
+
+            WeaponsAmbar.UpgradeWeaponsAmbar();
+            WeaponsAmbar.UpgradeWeaponsAmbar();
+            
             //==================================================================================================
 
             School school = new School("Athene", 1000, new List<Philosopher>());

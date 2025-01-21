@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sandbox1.Enums
 {
-    public enum FoodAmbarLevelUpPrice
+    public enum AmbarLevelUpPrice
     {
         Level1 = 50,
         Level2 = 100,
@@ -15,7 +15,7 @@ namespace Sandbox1.Enums
         Level5 = 1000
     }
 
-    public enum FoodAmbarLevelUpIncrease
+    public enum AmbarLevelUpIncrease
     {
         Level1 = 25,
         Level2 = 50,
