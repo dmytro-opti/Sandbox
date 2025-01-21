@@ -1,6 +1,13 @@
-﻿using Sandbox1.Buildings;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+using Sandbox1.Buildings;
 using Sandbox1.FoodProducts;
 using Sandbox1.People;
+using Sandbox1.Enums;
+
 
 namespace Sandbox1
 {
@@ -9,7 +16,21 @@ namespace Sandbox1
         static void Main()
         {
 
-            //FoodAmbar.AddFood(5);
+            //Danil
+
+            FoodAmbar FoodAmbar = new FoodAmbar("Athene");    
+
+            FoodAmbar.AddFood(TypesOfFood.Bread, 5);
+            FoodAmbar.AddFood(TypesOfFood.Meat, 7);
+            FoodAmbar.AddFood(TypesOfFood.Wine, 15);
+            FoodAmbar.AddFood(TypesOfFood.Bread, 2);
+
+            FoodAmbar.RemoveFood(TypesOfFood.Bread, 3);
+            FoodAmbar.RemoveFood(TypesOfFood.Meat, 2);
+            FoodAmbar.RemoveFood(TypesOfFood.Wine, 5);
+            FoodAmbar.RemoveFood(TypesOfFood.Bread, 20);
+
+            //==================================================================================================
 
             School school = new School("Athene", 1000, new List<Philosopher>());
 

@@ -1,5 +1,6 @@
-﻿using Sandbox1.FoodProducts;
-using System.Security.Cryptography.X509Certificates;
+﻿using Sandbox1;
+using Sandbox1.FoodProducts;
+using Sandbox1.Enums;
 
 
 namespace Sandbox1.Buildings
@@ -9,66 +10,60 @@ namespace Sandbox1.Buildings
         public int LevelFoodAmbar { get; set; }
         public int MaximumFoodValue { get; set; }
 
-        public List<Food> StoredFood { get; set; }
+        public Dictionary<TypesOfFood, int> StoredFood { get; set; }
 
         public FoodAmbar(string address) : base(address)
         {
             LevelFoodAmbar = 1;
             MaximumFoodValue = 100;
-            StoredFood = new List<Food>();
 
-            Meat meat = new Meat();
-            StoredFood.Add(meat);
+            StoredFood = new Dictionary<TypesOfFood, int>();
 
-            Wine wine = new Wine();
-            StoredFood.Add(wine);
-
-            Bread bread = new Bread();
-            StoredFood.Add(bread);
+            StoredFood.Add(TypesOfFood.Meat, 0);
+            StoredFood.Add(TypesOfFood.Wine, 0);
+            StoredFood.Add(TypesOfFood.Bread, 0);
 
 
         }
 
-        public void AddFood(Food food, Meat meat, Wine wine, Bread bread, int addValue)
+        public void AddFood(TypesOfFood typesOfFood, int addValue)
         {
-            if (food.Name == "Meat")
+            if (StoredFood.ContainsKey(typesOfFood))
             {
-                if (meat.Value + addValue < MaximumFoodValue)
+
+                int newValue = StoredFood[typesOfFood] + addValue;
+
+                if (newValue <= MaximumFoodValue)
                 {
-                    meat.Value += addValue;
+                    StoredFood[typesOfFood] = newValue;
                 }
                 else
                 {
-                    meat.Value = MaximumFoodValue;
+                    StoredFood[typesOfFood] = MaximumFoodValue;
                 }
 
-                if (food.Name == "Wine")
-                {
-                    if (wine.Value + addValue < MaximumFoodValue)
-                    {
-                        wine.Value += addValue;
-                    }
-                    else
-                    {
-                        wine.Value = MaximumFoodValue;
-                    }
-                }
-
-                if (food.Name == "Bread")
-                {
-                    if (bread.Value + addValue < MaximumFoodValue)
-                    {
-                        bread.Value += addValue;
-                    }
-                    else
-                    {
-                        bread.Value = MaximumFoodValue;
-                    }
-                }
+               
 
 
             }
         }
-    }
+
+        public void RemoveFood(TypesOfFood typesOfFood, int removeValue)
+        {
+            if (StoredFood.ContainsKey(typesOfFood))
+            {
+                int newValue = StoredFood[typesOfFood] - removeValue;
+
+                if (newValue >= 0)
+                {
+                    StoredFood[typesOfFood] = newValue;
+                }
+                else
+                {
+                    Console.WriteLine("Not enough food");
+                }
+            }
+        }
+}
 }
 
