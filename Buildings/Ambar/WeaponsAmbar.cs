@@ -1,6 +1,6 @@
 ﻿using Sandbox1.Enums;
 
-namespace Sandbox1.Buildings
+namespace Sandbox1.Buildings.Ambar
 {
     public class WeaponsAmbar : Ambar
     {

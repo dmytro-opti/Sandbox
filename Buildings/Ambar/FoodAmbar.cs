@@ -1,65 +1,65 @@
 ﻿using Sandbox1.Enums;
 
-namespace Sandbox1.Buildings
+namespace Sandbox1.Buildings.Ambar
 {
-    public class ResoursesAmbar : Ambar
+    public class FoodAmbar : Ambar
     {
-        string ResoursesAmbarLevel { get; set; }
+        string FoodAmbarLevel { get; set; }
 
-        public Dictionary<TypesOfResourses, int> StoredResourses { get; set; }
+        public Dictionary<TypesOfFood, int> StoredFood { get; set; }
 
-        public ResoursesAmbar(string address) : base(address)
+        public FoodAmbar(string address) : base(address)
         {
-            AmbarType = "ResoursesAmbar";
+            AmbarType = "FoodAmbar";
             AmbsrsCount = 1;
 
             AmbarLevelValue = 1;
             MaximumItemsValue = 100;
             AmbarLevel = $"Level{AmbarLevelValue}";
 
-            StoredResourses = new Dictionary<TypesOfResourses, int>();
+            StoredFood = new Dictionary<TypesOfFood, int>();
 
-            foreach (TypesOfResourses type in Enum.GetValues(typeof(TypesOfResourses)))
+            foreach (TypesOfFood type in Enum.GetValues(typeof(TypesOfFood)))
             {
-                StoredResourses.Add(type, 0);
+                StoredFood.Add(type, 0);
             }
         }
 
-        public void AddResourses(TypesOfResourses typesOfResourses, int addValue)
+        public void AddFood(TypesOfFood typesOfFood, int addValue)
         {
-            if (StoredResourses.ContainsKey(typesOfResourses))
+            if (StoredFood.ContainsKey(typesOfFood))
             {
-                int newValue = StoredResourses[typesOfResourses] + addValue;
+                int newValue = StoredFood[typesOfFood] + addValue;
 
                 if (newValue <= MaximumItemsValue)
                 {
-                    StoredResourses[typesOfResourses] = newValue;
+                    StoredFood[typesOfFood] = newValue;
                 }
                 else
                 {
-                    StoredResourses[typesOfResourses] = MaximumItemsValue;
+                    StoredFood[typesOfFood] = MaximumItemsValue;
                 }
             }
         }
 
-        public void RemoveResourses(TypesOfResourses typesOfResourses, int removeValue)
+        public void RemoveFood(TypesOfFood typesOfFood, int removeValue)
         {
-            if (StoredResourses.ContainsKey(typesOfResourses))
+            if (StoredFood.ContainsKey(typesOfFood))
             {
-                int newValue = StoredResourses[typesOfResourses] - removeValue;
+                int newValue = StoredFood[typesOfFood] - removeValue;
 
                 if (newValue >= 0)
                 {
-                    StoredResourses[typesOfResourses] = newValue;
+                    StoredFood[typesOfFood] = newValue;
                 }
                 else
                 {
-                    Console.WriteLine("Not enough Resourses");
+                    Console.WriteLine("Not enough food");
                 }
             }
         }
 
-        public void UpgradeResoursesAmbar()
+        public void UpgradeFoodAmbar()
         {
             if (AmbarLevelValue < 5)
             {

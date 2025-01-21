@@ -1,11 +1,11 @@
-﻿namespace Sandbox1.Buildings
+﻿namespace Sandbox1.Buildings.Ambar
 {
     public class Ambar : Building
     {
         public int AmbarLevelValue { get; set; }
         public int MaximumItemsValue { get; set; }
         public string AmbarLevel { get; set; }
-        public string AmbarType { get; set; }  
+        public string AmbarType { get; set; }
         public int AmbsrsCount { get; set; }
 
         public Ambar(string address) : base(address)
