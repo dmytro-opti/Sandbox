@@ -130,9 +130,11 @@ namespace Sandbox1.Buildings
                 // Видаляємо втеклих в'язнів із списку
                 Prisoners = Prisoners.Take(Prisoners.Count - escapingPrisoners).ToList();
 
-                for (int i = 0; i < (int)Type * Prisoners.Count - Guards.Count ; i++) 
+                var needToHire = (int)Type * Prisoners.Count - Guards.Count;
+
+                for (int i = 0; i < needToHire; i++) 
                 { 
-                    AddGuard (Guards[i]);
+                    AddGuard(new Guard($"Vasylyan {i}", 100, 1000));
                 }
 
                 Console.WriteLine($"{escapingPrisoners} prisoners have escaped! Remaining prisoners: {Prisoners.Count}");

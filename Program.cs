@@ -15,8 +15,6 @@ namespace Sandbox1
             school = new School("Megara", 800, new List<Philosopher>(), new List<Person>());
 
 
-
-
             Prisoner prisoner1 = new Prisoner("John Doe", new DateTime(2027, 10, 28), 16, "Theft", 1);
             Prisoner prisoner2 = new Prisoner("Jane Doe", new DateTime(2029, 5, 12), 25, "Fraud", 2);
             Prisoner prisoner3 = new Prisoner("Mike Smith", new DateTime(2045, 12, 1), 30, "Murder", 3);
@@ -34,8 +32,14 @@ namespace Sandbox1
             Prison rehabilitationPrison = new Prison("Rehabilitation Center St.", 3000000, new List<Guard> { guard2, guard3 }, director2, PrisonType.RehabilitationCenter);
             Prison dangerousPrison = new Prison("Dangerous Prison St.", 5000000, new List<Guard> { guard1, guard3 }, director3, PrisonType.Dangerous);
 
+            juvenilePrison.Budget = 10000000;
             // Додаємо в'язнів до відповідних в'язниць
             juvenilePrison.AddPrisoner(prisoner1);
+            juvenilePrison.AddPrisoner(prisoner2);
+            juvenilePrison.AddPrisoner(prisoner3);
+            juvenilePrison.AddPrisoner(prisoner1);
+            juvenilePrison.CheckSafetyAndEscape();
+            juvenilePrison.CheckSafetyAndEscape();
             rehabilitationPrison.AddPrisoner(prisoner2);
             dangerousPrison.AddPrisoner(prisoner3);
 
