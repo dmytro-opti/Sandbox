@@ -89,7 +89,9 @@ namespace Sandbox1
 
             School school = new School("Athene", 1000, new List<Philosopher>());
 
+
             school.HirePhilosopher(new Philosopher()
+
             {
                 Subjects = new List<string>() { "Math", "Logic" },
                 Budget = 0,
@@ -115,7 +117,9 @@ namespace Sandbox1
 
             Console.WriteLine(school.IsSchoolActive());
 
+
             if (school.IsSchoolActive())
+
             {
                 school.Learning();
                 school.Graduating(school.People);
