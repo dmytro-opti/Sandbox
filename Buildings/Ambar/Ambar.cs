@@ -5,6 +5,7 @@ namespace Sandbox1.Buildings.Ambar
     public class Ambar : Building
     {
         public AmbarLevelUpPrice CurrentUpdatePrice { get; set; }
+        public AmbarLevelUpCapacity CurrentAmbarCapacity { get; set; }
         public AmbarType AmbarType { get; set; }
 
         public List<ItemType> AllowedItemTypes { get; set; } = new List<ItemType>();
@@ -16,12 +17,14 @@ namespace Sandbox1.Buildings.Ambar
         {
             AmbarType = ambarType;
             CurrentUpdatePrice = AmbarLevelUpPrice.Level1;
+            CurrentAmbarCapacity = AmbarLevelUpCapacity.Level1;
         }
 
         public Ambar(string address, AmbarType ambarType, List<ItemType> allowedItemTypes) : base(address)
         {
             AmbarType = ambarType;
             CurrentUpdatePrice = AmbarLevelUpPrice.Level1;
+            CurrentAmbarCapacity = AmbarLevelUpCapacity.Level1;
             AllowedItemTypes = allowedItemTypes;
         }
 
@@ -73,7 +76,12 @@ namespace Sandbox1.Buildings.Ambar
         {
             int.TryParse(CurrentUpdatePrice.ToString().Replace("Level", ""), out int currentLevel);
             int.TryParse(ambarLevelPrice.ToString().Replace("Level", ""), out int newLevel);
-            if (currentLevel == newLevel - 1) 
+
+            if (currentLevel == newLevel)
+            {
+                Console.WriteLine($"You have already {currentLevel} level of this Ambar");
+            }
+            else if (currentLevel == newLevel - 1) 
             {
                 CurrentUpdatePrice = ambarLevelPrice;
                 foreach (var key in CapacityPerItem.Keys) 
