@@ -1,6 +1,4 @@
 ﻿using Sandbox1.Enums;
-using System.Collections.Generic;
-using System.Linq;
 using Sandbox1.People;
 
 namespace Sandbox1.Buildings
@@ -8,7 +6,7 @@ namespace Sandbox1.Buildings
     public class Barrack : GovermentBuilding
     {
         public List<Warrior> Warriors { get; set; } = new List<Warrior>();
-
+        public List<Recruiter> Recruiters { get; set; } = new List<Recruiter>();
         public int MaxWarriorCapacity { get; set; } = 50;
 
         public Barrack(string address, int buildingPrice) : base(address, buildingPrice) { }
@@ -19,6 +17,10 @@ namespace Sandbox1.Buildings
             {
                 Warriors.Add(warrior);
             }
+            else
+            {
+                Console.WriteLine("Казарма заповнена, не можна додати воїна.");
+            }
         }
 
         public void RemoveWarrior(Warrior warrior)
@@ -26,22 +28,31 @@ namespace Sandbox1.Buildings
             Warriors.Remove(warrior);
         }
 
+        public void AddRecruiter(Recruiter recruiter)
+        {
+            Recruiters.Add(recruiter);
+        }
+
+        public void HireRecruiter(Recruiter recruiter, Warrior warrior)
+        {
+            if (recruiter != null && warrior != null)
+            {
+                int recruitmentCost = recruiter.MonthlySalary * recruiter.SalaryMultiplier;
+                Console.WriteLine($"Найм рекрутера {recruiter.Name} для {warrior.Name} коштує: {recruitmentCost}");
+                recruiter.Recruit(warrior);
+            }
+        }
+
         public void UpdateWarriorRanks()
         {
             foreach (var warrior in Warriors.ToList())
             {
-                if (warrior.Level >= 30)
+                warrior.Rank = warrior.Level switch
                 {
-                    warrior.Rank = WarriorRank.Legend; 
-                }
-                else if (warrior.Level >= 20)
-                {
-                    warrior.Rank = WarriorRank.Mentor; 
-                }
-                else
-                {
-                    warrior.Rank = WarriorRank.Trainee; 
-                }
+                    >= 30 => WarriorRank.Legend,
+                    >= 20 => WarriorRank.Mentor,
+                    _ => WarriorRank.Trainee
+                };
             }
         }
 
@@ -57,7 +68,10 @@ namespace Sandbox1.Buildings
 
             foreach (var trainee in trainees)
             {
-                trainee.Train();
+                trainee.Strength += 5;
+                trainee.Agility += 5;
+
+                trainee.UpdateLevelAndStats();
             }
         }
 
@@ -65,9 +79,18 @@ namespace Sandbox1.Buildings
         {
             var mentors = Warriors.Where(w => w.Rank == WarriorRank.Mentor).ToList();
 
+            if (mentors.Count == 0)
+            {
+                Console.WriteLine("Немає наставників для покращення.");
+                return;
+            }
+
             foreach (var mentor in mentors)
             {
-                mentor.UpgradeLevel();
+                mentor.Strength += 10;
+                mentor.Agility += 10;
+
+                mentor.UpdateLevelAndStats();
             }
         }
 

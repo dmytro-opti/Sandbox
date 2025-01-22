@@ -1,4 +1,5 @@
-﻿using Sandbox1.Enums;
+﻿using System;
+using Sandbox1.Enums;
 
 namespace Sandbox1.People
 {
@@ -29,44 +30,34 @@ namespace Sandbox1.People
             Agility = agility;
         }
 
-        public void Train()
+        public void UpdateLevelAndStats()
         {
-            Strength += 5;
-            Agility += 5;
-        }
+            int calculatedLevel = (Strength + Agility) / 50; 
+            if (calculatedLevel > Level)
+            {
+                Level = calculatedLevel;
+                Console.WriteLine($"{Name} досягнув нового рівня! Новий рівень: {Level}");
+            }
 
-        public void UpgradeLevel()
-        {
-            Level += 1;
-            Strength += 10;
-            Agility += 10;
+            Strength += Level * 2; 
+            Agility += Level * 2;  
+            Console.WriteLine($"{Name} отримав бонусні стати: +{Level * 2} Strength і +{Level * 2} Agility!");
         }
 
         public void ChangeEquipment(string newWeapon, string newArmor)
         {
-            try
+            if (Enum.TryParse(newWeapon, true, out WeaponType parsedWeapon))
             {
-                Weapon = (WeaponType)Enum.Parse(typeof(WeaponType), newWeapon, true);
+                Weapon = parsedWeapon;
                 Armor = newArmor;
                 Console.WriteLine($"{Name} змінив спорядження. Нова зброя: {Weapon}, нова броня: {Armor}");
             }
-            catch (ArgumentException)
+            else
             {
                 Console.WriteLine($"Невідома зброя: {newWeapon}. Зміна не відбулася.");
             }
         }
 
-        public int CalculateDamage()
-        {
-            return Weapon switch
-            {
-                WeaponType.Sword => 15 + (Agility + Level + Strength) / 3,
-                WeaponType.Spear => 20 + (Agility + Level) / 2,
-                WeaponType.Bow => 10 + Agility / 2,
-                WeaponType.Axe => 25 + Strength + Level,
-                _ => 5
-            };
-        }
 
         public void ReduceHealth(int damage)
         {
@@ -80,6 +71,23 @@ namespace Sandbox1.People
             {
                 Console.WriteLine($"{Name} отримав {damage} ушкоджень. Залишилось {Health} здоров'я.");
             }
+        }
+
+        public void DealDamage(Warrior target)
+        {
+            int calculatedDamage = (Strength + Agility + Level) / 3;
+
+            calculatedDamage += Weapon switch
+            {
+                WeaponType.Sword => 10,
+                WeaponType.Spear => 12,
+                WeaponType.Bow => 8,
+                WeaponType.Axe => 15,
+                _ => 5
+            };
+
+            Console.WriteLine($"{Name} завдав {calculatedDamage} ушкоджень {target.Name}.");
+            target.ReduceHealth(calculatedDamage);
         }
 
         private WarriorRank DetermineRank()

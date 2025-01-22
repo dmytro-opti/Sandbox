@@ -1,4 +1,6 @@
-﻿using Sandbox1.Buildings;
+﻿using System;
+using Sandbox1.Buildings;
+using Sandbox1.Enums;
 using Sandbox1.People;
 
 namespace Sandbox1
@@ -7,6 +9,23 @@ namespace Sandbox1
     {
         static void Main()
         {
+
+            Barrack barrack = new Barrack("Main Barracks", 500);
+
+            Warrior warrior1 = new Warrior("Achilles", 1, 100, 200, 30, 25, 15, WeaponType.Sword, "Bronze Armor");
+            Warrior warrior2 = new Warrior("Hercules", 1, 120, 250, 40, 30, 18, WeaponType.Axe, "Golden Armor");
+
+            barrack.AddWarrior(warrior1);
+            barrack.AddWarrior(warrior2);
+
+            Recruiter recruiter = new Recruiter("Aristotle", 1, 200, 500, 10);
+
+            barrack.AddRecruiter(recruiter);
+
+            barrack.HireRecruiter(recruiter, warrior1);
+
+            barrack.UpdateWarriorRanks();
+
             School school = new School("Athene", 1000, new List<Philosopher>());
 
             school.HirePhilosopher(new Philosopher() 
@@ -38,7 +57,7 @@ namespace Sandbox1
             if (school.IsSchoolActive()) 
             {
                 school.Learning();
-                school.Graduating(school.People);
+                school.Graduating(school.People);   
                 school.PayMonthlySalary(school.Philosophers);
             }
 
