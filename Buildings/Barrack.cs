@@ -102,6 +102,7 @@ namespace Sandbox1.Buildings
             }
         }
 
+
         public void UpgradeMentors()
         {
             var mentors = Warriors.Where(w => w.Rank == WarriorRank.Mentor).ToList();
