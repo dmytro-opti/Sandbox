@@ -9,7 +9,6 @@ namespace Sandbox1.Buildings
         public List<Person> People { get; set; } = new List<Person>();
         public string Status { get; set; }
         public List<string> Subjects { get; set; } = new List<string>();
-
         public School(string address, int buildingPrice, List<Philosopher> philosophers) : base(address, buildingPrice)
         {
             Philosophers = philosophers;
@@ -46,6 +45,8 @@ namespace Sandbox1.Buildings
             foreach (Person person in people) 
             {
                 People.Remove(person);
+
+                //grades
             }
         }
 

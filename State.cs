@@ -14,7 +14,7 @@ namespace Sandbox1
         public List<NeighbourState> NeighbourStates { get; set; } = new List<NeighbourState>();
         public State()
         {
-            
+            Money = 1000000;
         }
 
         public void Build(GovermentBuilding govermentBuilding)

@@ -15,12 +15,12 @@ namespace Sandbox1.Buildings
 
         public void PayMonthlySalary<T>(List<T> people) where T : Person
         {
-            foreach (Person person in people.OrderBy(x => x.Priority)) 
+            foreach (Person person in people.OrderBy(x => x.Priority))
             {
-                if (person != null && Budget >= person.MonthlySalary) 
+                if (person != null && Budget >= person.MonthlySalary)
                 {
                     Budget -= person.MonthlySalary;
-                    person.Budget += person.MonthlySalary; 
+                    person.Budget += person.MonthlySalary;
                 }
             }
         }
