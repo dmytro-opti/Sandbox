@@ -8,11 +8,11 @@ namespace Sandbox1.Buildings
     public class Prison : GovermentBuilding
     {
         public List<Prisoner> Prisoners { get; set; } = new List<Prisoner>();
-        public List<Guard> Guards { get; set; }= new List<Guard>();
+        public List<Guard> Guards { get; set; } = new List<Guard>();
         public PrisonType Type { get; set; }
         public Person Director { get; set; }
         public bool Safety { get; set; }
-        
+
 
 
         public Prison(string address, int buildingPrice, List<Guard> guards, Person director, PrisonType type) : base(address, buildingPrice)
@@ -20,7 +20,7 @@ namespace Sandbox1.Buildings
             Guards = guards;
             Director = director;
             Prisoners = new List<Prisoner>();
-            Type = type;         
+            Type = type;
         }
 
         public void AddPrisoner(Prisoner prisoner)
@@ -32,27 +32,27 @@ namespace Sandbox1.Buildings
         {
             foreach (var prisoner in prisoners)
             {
-                    if (prisoner.Danger == 1 && prisoner.Age < 18)
-                    {
-                        prisons.FirstOrDefault(p => p.Type == PrisonType.Juvenal)?.AddPrisoner(prisoner);
-                        Console.WriteLine($"{prisoner.Name} was sent to Juvenal Prison");
-                    }
-                    else if (prisoner.Danger == 2 && prisoner.Age >= 18)
-                    {
-                        prisons.FirstOrDefault(p => p.Type == PrisonType.RehabilitationCenter)?.AddPrisoner(prisoner);
-                        Console.WriteLine($"{prisoner.Name} was sent to Rehabilitation Center");
-                    }
-                    else if (prisoner.Danger >= 3 && prisoner.Age >= 18)
-                    {
-                        prisons.FirstOrDefault(p => p.Type == PrisonType.Dangerous)?.AddPrisoner(prisoner);
-                        Console.WriteLine($"{prisoner.Name} was sent to High Security Prison");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"No suitable prison found for {prisoner.Name}.");
-                    }
+                if (prisoner.Danger == 1 && prisoner.Age < 18)
+                {
+                    prisons.FirstOrDefault(p => p.Type == PrisonType.Juvenal)?.AddPrisoner(prisoner);
+                    Console.WriteLine($"{prisoner.Name} was sent to Juvenal Prison");
+                }
+                else if (prisoner.Danger == 2 && prisoner.Age >= 18)
+                {
+                    prisons.FirstOrDefault(p => p.Type == PrisonType.RehabilitationCenter)?.AddPrisoner(prisoner);
+                    Console.WriteLine($"{prisoner.Name} was sent to Rehabilitation Center");
+                }
+                else if (prisoner.Danger >= 3 && prisoner.Age >= 18)
+                {
+                    prisons.FirstOrDefault(p => p.Type == PrisonType.Dangerous)?.AddPrisoner(prisoner);
+                    Console.WriteLine($"{prisoner.Name} was sent to High Security Prison");
+                }
+                else
+                {
+                    Console.WriteLine($"No suitable prison found for {prisoner.Name}.");
                 }
             }
+        }
 
         public void ListPrisoners()
         {
@@ -62,7 +62,7 @@ namespace Sandbox1.Buildings
                 Console.WriteLine($"Name: {prisoner.Name}, Age: {prisoner.Age}, Crime: {prisoner.Crime}, Release Date: {prisoner.ReleaseDate:yyyy-MM-dd}, Danger: {prisoner.Danger}");
             }
         }
- 
+
         public bool ReleasePrisoner(Prisoner prisoner, Person person)
         {
             switch (person.Role)
@@ -98,7 +98,7 @@ namespace Sandbox1.Buildings
         }
 
         public bool RemoveGuard(Guard guard)
-        { 
+        {
             if (Guards.Contains(guard))
             {
                 Guards.Remove(guard);
@@ -107,14 +107,14 @@ namespace Sandbox1.Buildings
             return false;
         }
 
-      
+
         public bool IsSafe()
         {
-                           
-         return Budget >= Guards.Sum(x=> x.MonthlySalary)+ Director.MonthlySalary && Guards.Count / Prisoners.Count >= (int)Type;
-                
+
+            return Budget >= Guards.Sum(x => x.MonthlySalary) + Director.MonthlySalary && Guards.Count / Prisoners.Count >= (int)Type;
+
         }
- 
+
         public void CheckSafetyAndEscape()
         {
             if (!IsSafe())
@@ -133,15 +133,18 @@ namespace Sandbox1.Buildings
                 var needToHire = (int)Type * Prisoners.Count - Guards.Count;
                 for (int i = 0; i < needToHire; i++)
                 {
-                    AddGuard(new Guard($"Vasylyan {i}", 100, 1000));
-                }
+                    for (int i = 0; i < needToHire; i++)
+                    {
+                        AddGuard(new Guard($"Vasylyan {i}", 100, 1000));
+                    }
 
-                Console.WriteLine($"{escapingPrisoners} prisoners have escaped! Remaining prisoners: {Prisoners.Count}");
+                    Console.WriteLine($"{escapingPrisoners} prisoners have escaped! Remaining prisoners: {Prisoners.Count}");
+                }
             }
             else
             {
                 Console.WriteLine("Prison is safe. No one is escaping.");
             }
+            }
         }
-    }
 }
