@@ -1,6 +1,6 @@
 ﻿namespace Sandbox1.People
 {
-    internal class King : Person
+    public class King : Person
     {
         public King()
         {

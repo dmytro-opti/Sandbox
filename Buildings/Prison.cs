@@ -133,10 +133,7 @@ namespace Sandbox1.Buildings
                 var needToHire = (int)Type * Prisoners.Count - Guards.Count;
                 for (int i = 0; i < needToHire; i++)
                 {
-                    for (int i = 0; i < needToHire; i++)
-                    {
-                        AddGuard(new Guard($"Vasylyan {i}", 100, 1000));
-                    }
+                    AddGuard(new Guard($"Vasylyan {i}", 100, 1000));
 
                     Console.WriteLine($"{escapingPrisoners} prisoners have escaped! Remaining prisoners: {Prisoners.Count}");
                 }
