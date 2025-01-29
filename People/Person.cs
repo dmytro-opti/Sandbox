@@ -10,6 +10,7 @@ namespace Sandbox1.People
         public int MonthlySalary { get; set; }
         public int Budget { get; set; }
         public Role Role { get; internal set; }
+        public string Address { get; set; }  
 
         public Person()
         {

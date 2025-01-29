@@ -1,5 +1,6 @@
 ﻿using Sandbox1.Buildings;
 using Sandbox1.Enums;
+using Sandbox1.Items;
 using Sandbox1.People;
 
 namespace Sandbox1
@@ -8,6 +9,17 @@ namespace Sandbox1
     {
         static void Main()
         {
+            List<string> strings = new List<string>();
+            for (int index = 0; index < 10; index++)
+            {
+                strings.Add(SimulateProcess());
+            }
+
+            foreach (var item in strings)
+            {
+                Console.WriteLine(item);
+            }
+
             School school = new School("Athene", 1000, new List<Philosopher>());
 
             Console.WriteLine(school.People.Count);
@@ -153,6 +165,45 @@ namespace Sandbox1
 
             //PORT
 
+        }
+
+        public static string SimulateProcess()
+        {
+            var police = new GreecePolice();
+
+            foreach (var item in Enumerable.Range(1, GetRandom(10, 50)))
+            {
+                //var ambar = new Ambar1($"Soborna, {item}", AmbarType.Resources);
+                var barrack = new Barrack($"Soborna, {item + 10}", 1000);
+                //var palace = new Palace($"Soborna, {item + 15}", 10000);
+
+                foreach (var i in Enumerable.Range(1, GetRandom(100, 10000)))
+                {
+                    barrack.Items.Add(new Armor($"Armor {i}", "", (ArmorType)GetRandom(0, 5), GetRandom(10, 15)));
+                }
+
+                foreach (var i in Enumerable.Range(1, GetRandom(100, 10000)))
+                {
+                    barrack.Items.Add(new Weapon($"Weapon {i}", "", (WeaponType)GetRandom(0, 4), GetRandom(10, 15)));
+                }
+
+                foreach (var i in Enumerable.Range(1, GetRandom(10, 1000)))
+                {
+                    var warrior = new Warrior($"Warrior {i + 1}", 0, GetRandom(10, 20), GetRandom(10, 20), GetRandom(10, 20), GetRandom(10, 20), GetRandom(10, 20), WeaponType.Axe, "", 100);
+                    barrack.AddWarrior(warrior);
+                }
+
+                police.Buildings.Add(barrack);
+            }
+
+            var result = police.IsArmyReadyForWar();
+
+            return $"Army is ready for war: {result.ReadyForWar}\nWarrior count: {result.Warriors}\nMin sets: {result.Sets}\n\n";
+        }
+
+        public static int GetRandom(int min, int max) 
+        {
+            return new Random().Next(min, max);
         }
     }
 }

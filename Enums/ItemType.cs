@@ -7,9 +7,6 @@
         Wine,
         Wood,
         Stone,
-        Iron,
-        Sword,
-        Bow,
-        Spear
+        Iron
     }
 }

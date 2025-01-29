@@ -1,10 +1,12 @@
 ﻿using Sandbox1.Enums;
+using Sandbox1.Items;
 using Sandbox1.People;
 
 namespace Sandbox1.Buildings
 {
     public class Barrack : GovermentBuilding
     {
+        public List<Item> Items { get; set; } = new List<Item>();
         public List<Warrior> Warriors { get; set; } = new List<Warrior>();
         public List<Recruiter> Recruiters { get; set; } = new List<Recruiter>();
         public int MaxWarriorCapacity { get; set; } = 50;
