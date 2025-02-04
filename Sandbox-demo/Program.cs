@@ -21,9 +21,13 @@ namespace Sandbox1
             market.NewVendor("Vendor2", new Dictionary<ItemType, int> { { ItemType.Bread, 20 }, { ItemType.Meat, 1 }, { ItemType.Wine, 44 } });
             market.NewVendor("Vendor3", new Dictionary<ItemType, int> { { ItemType.Bread, 11 }, { ItemType.Meat, 20 }, { ItemType.Wine, 11 } });
 
-            market.CheckVendors();
-            market1.CheckVendors();
-            market2.CheckVendors();
+            market.BoughtFromVendor("Vendor2", new Dictionary<ItemType, int> { { ItemType.Bread, 5000 }, { ItemType.Meat, 1 }, { ItemType.Wine, 3 } });
+
+            //market.CheckVendors();
+            //market1.CheckVendors();
+            //market2.CheckVendors();
+
+            //market.ShowVendors();
 
 
 
@@ -128,9 +132,9 @@ namespace Sandbox1
 
 
 
-            //    Director director1 = new Director("Director White", 50, 5000);
-            //    Director director2 = new Director("Director Green", 45, 4800);
-            //    Director director3 = new Director("Director Black", 55, 5200);
+            Director director1 = new Director("Director White", 50, 5000);
+            Director director2 = new Director("Director Green", 45, 4800);
+            Director director3 = new Director("Director Black", 55, 5200);
 
             //    // Створюємо в'язниці з різними типами
             //    Prison juvenilePrison = new Prison("Juvenile Prison St.", 2000000, new List<Guard> { guard1, guard2, guard3, guard4, guard5, guard6, guard7 }, director1, PrisonType.Juvenal);

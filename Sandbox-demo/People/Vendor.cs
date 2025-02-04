@@ -16,6 +16,7 @@ namespace Sandbox1.People
         {
             Name = name;
             Goods = goods;
+            Budget = 0;
         }
     }
 }

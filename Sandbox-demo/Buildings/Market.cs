@@ -22,6 +22,7 @@ namespace Sandbox1.Buildings
         public Market(string address, int buildingPrice, MarketType marketType) : base(address, buildingPrice)
         {
             MarketType = marketType;
+            MarketBudget = 1000;
             CurrentMarketLevelUpPrice = MarketLevelUpPrice.Level1;
             CurrentMarketPlaseCapacity = MarketLevelUpCapacity.Level1;
             if (marketType == MarketType.Food)
@@ -55,17 +56,21 @@ namespace Sandbox1.Buildings
         }
 
 
-        //public void ShowVendors(List<Vendor> vendors)
-        //{
-        //    foreach (Vendor vendor in vendors)
-        //    {
-        //        Console.WriteLine($"Vendor: {vendor.Name}");
-        //        foreach (string good in vendor.Goods)
-        //        {
-        //            Console.WriteLine($"Good: {good}");
-        //        }
-        //    }
-        //}
+        public void ShowVendors()
+        {
+
+            foreach (Vendor vendor in vendors)
+            {
+                Console.WriteLine($"{vendor.Name}:");
+
+                foreach (var good in vendor.Goods)
+                {
+                    Console.WriteLine($"{good.Key} - {good.Value}");
+                }
+            }
+        }
+
+
 
         public void CheckVendors()
         {
@@ -73,6 +78,38 @@ namespace Sandbox1.Buildings
 
             var message = vendorCount > 2 ? "Все топчик!" : "Продавців менше двох.";
             Console.WriteLine(message);
+        }
+
+        public void BoughtFromVendor(string Name, Dictionary<ItemType, int> good)
+        { 
+            if (vendors.Any(vendor => vendor.Name == Name))
+            {
+                var vendor = vendors.First(vendor => vendor.Name == Name);
+                foreach (var item in good)
+                {
+                    if (vendor.Goods.ContainsKey(item.Key))
+                    {
+                        if (vendor.Goods[item.Key] >= item.Value)
+                        {
+                            vendor.Goods[item.Key] -= item.Value;
+                            vendor.Budget += item.Value * 1;
+                            MarketBudget += item.Value * 0.2;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Недостатньо товару.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Товар відсутній.");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Продавця не знайдено.");
+            }
         }
 
     }
