@@ -1,4 +1,5 @@
 ﻿using Sandbox1.Buildings;
+using Sandbox1.Buildings.Ambar.Items.FoodProducts;
 using Sandbox1.Enums;
 using Sandbox1.Items;
 using Sandbox1.People;
@@ -11,17 +12,22 @@ namespace Sandbox1
         {
             Market market = new Market("Soborna, 1", 1000, MarketType.Food);
 
-            market.ShowVendors(market.vendors);
+            Market market1 = new Market("Soborna, 2", 1000, MarketType.Resources);
+
+            Market market2 = new Market("Soborna, 3", 1000, MarketType.Weapon);
+
+
+            market.NewVendor("Vendor1", new Dictionary<ItemType, int> { { ItemType.Bread, 10 }, { ItemType.Meat, 3 }, { ItemType.Wine, 33 } });
+            market.NewVendor("Vendor2", new Dictionary<ItemType, int> { { ItemType.Bread, 20 }, { ItemType.Meat, 1 }, { ItemType.Wine, 44 } });
+            market.NewVendor("Vendor3", new Dictionary<ItemType, int> { { ItemType.Bread, 11 }, { ItemType.Meat, 20 }, { ItemType.Wine, 11 } });
+
             market.CheckVendors();
-            market.NewVendor("Vendor1", new List<string> { "Apple", "Banana", "Orange" });
-            market.ShowVendors(market.vendors);
-            market.CheckVendors();
-            market.NewVendor("Vendor2", new List<string> { "Sword", "Axe", "Bow" });
-            market.ShowVendors(market.vendors);
-            market.CheckVendors();
-            market.NewVendor("Vendor3", new List<string> { "Wood", "Stone", "Iron" });
-            market.ShowVendors(market.vendors);
-            market.CheckVendors();
+            market1.CheckVendors();
+            market2.CheckVendors();
+
+
+
+
 
 
 
